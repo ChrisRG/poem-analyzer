@@ -8,19 +8,25 @@
 #
 # Inspired by a poetry analysis tool in python:
 #   https://github.com/warrengalyen/PoetryAnalysis
-
-# load CMU
-
 require 'json'
 
-CMU = 
+# Load the Carnegie Mellon Pronunciation Dictionary
+CMU = JSON.load(File.open("cmu-dict/cmudict.json"))
 
-# Tokenizing: splitting a line into words and stripping non-alphabetical characters
+# Tokenizing: split a line into words and strip non-alphabetical characters
 def tokenize(line)
   tokenized_line = line.split
-  tokenized_line.map { |token| token.chomp.downcase.gsub(/\W/, '') }
+  tokenized_line
+    .map { |token| token.chomp.downcase.gsub(/\W/, '') }
+    .reject(&:empty?)
 end
 
+def syllabize(word)
+  syllables = CMU[word]
+  return syllables unless syllables.nil?
+
+  [['']]
+end
 
 # Main program
 # Check for weird stuff when running the script
@@ -35,9 +41,14 @@ unless File.file?(filename)
   exit
 end
 
-# Save the file as an array of lines before tokenizing and scanning each line
+# Tokenize and scan each line, print 
 # Scanned lines are saved into a new array and displayed
 lines = File.readlines(filename)
 lines.each do |line|
-  p tokenize(line)
+  tokenized = tokenize(line)
+  tokenized.each do |word|
+    # p word
+    # p syllabize(word)
+    # TODO: Produce an array of scanned words
+  end
 end

@@ -18,4 +18,4 @@ Very rudimentyary script for scanning the meter of English poetry!
 Unfortunately the analyzer is not particularly accurate at the moment. Currently it does not handle words containing punctuation or variants very well. The next steps include integrating some basic metrical rules (such as unstressed monosyllables) and providing some sort of "guess" for words that aren't found in the CMU.
 
 
-Based on a poetry analysis tool written in python: https://github.com/warrengalyen/PoetryAnalysis
+Inspired by a poetry analysis tool written in python: https://github.com/warrengalyen/PoetryAnalysis

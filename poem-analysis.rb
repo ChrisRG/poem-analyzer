@@ -41,10 +41,8 @@ end
 # Iterates through lines, prints meter (^ / _) above the original line
 def print_meter(lines, scanned_lines)
   (0...lines.length).each do |line_num|
-    p scanned_line[line_num]
-    p scanned_lines[line_num]
-    # puts metrify_string(lines[line_num], scanned_lines[line_num])
-    # puts lines[line_num]
+    puts metrify_string(lines[line_num], scanned_lines[line_num])
+    puts lines[line_num]
   end
 end
 
@@ -59,6 +57,7 @@ def metrify_string(line, scanned_line)
     next if word_position.nil?
 
     # Inserts meter array into blank line at same index as original word
+    # TODO: insert the scanned_line meter into a range
     meter_string[word_position] = scanned_line[index].join(' ')
   end
   meter_string

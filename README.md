@@ -1,7 +1,9 @@
 # poem-analyzer
-Very rudimentyary script for scanning the meter of English poetry:
+Very rudimentyary script for scanning the meter of English poetry!
 
-## Process
+## Example
+
+## Approach
 0) takes as input a text file containing one poem
 1) loads the Carnegie Mellon Uni pronunciation dictionary as JSON
 2) tokenizes each line (removes punctuation, converts to lower case)
@@ -12,6 +14,8 @@ Very rudimentyary script for scanning the meter of English poetry:
      _ => unstressed, ^ => stressed
      e.g. (iambic pentameter: ^_ ^_ ^_ ^_ ^_)
 
-Unfortunately not particularly accurate at the moment!
+## To do
+Unfortunately the analyzer is not particularly accurate at the moment. Currently it does not handle words containing punctuation or variants very well. The next steps include integrating some basic metrical rules (such as unstressed monosyllables) and providing some sort of "guess" for words that aren't found in the CMU.
+
 
 Based on a poetry analysis tool written in python: https://github.com/warrengalyen/PoetryAnalysis

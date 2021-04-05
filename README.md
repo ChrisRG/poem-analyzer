@@ -4,7 +4,7 @@ Very rudimentyary script for scanning the meter of English poetry!
 ## Example
 
 ## Approach
-0) takes as input a text file containing one poem
+0) takes as input a text file containing one poem (with no title, author, or any other headers)
 1) loads the Carnegie Mellon Uni pronunciation dictionary as JSON
 2) tokenizes each line (removes punctuation, converts to lower case)
 3) phoneticizes each word, if possible, according to the CMU dict

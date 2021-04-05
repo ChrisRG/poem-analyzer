@@ -1,5 +1,7 @@
-# poem-analyzer
-Very rudimentyary script for scanning the meter of English poetry!
+# poem-analyzer    p lines[line_num]
+    p scanned_lines[line_num]
+
+Rather rudimentary script for scanning the meter of English poetry! Still has a lot of work to do.
 
 ## Example
 

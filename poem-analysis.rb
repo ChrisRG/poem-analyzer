@@ -1,17 +1,3 @@
-# Very rudimentyary script for scanning the meter of English poetry:
-#
-# 0) takes as input a text file containing one poem
-# 1) loads the Carnegie Mellon Uni pronunciation dictionary as JSON
-# 2) tokenizes each line (removes punctuation, converts to lower case)
-# 3) phoneticizes each word, if possible, according to the CMU dict
-# 4) syllabizes the word based on stress markers (0-2)
-# 5) scans the word based on syllabic stress
-# 6) outputs conventional visual representation of meter
-#     _ => unstressed, ^ => stressed
-#     e.g. (iambic pentameter: ^_ ^_ ^_ ^_ ^_)
-#
-# Unfortunately not particularly accurate at the moment!
-
 require 'json'
 
 # Load the Carnegie Mellon Pronunciation Dictionary
@@ -34,16 +20,15 @@ def phoneticize(word)
   [['']]
 end
 
-# Returns an array of stressed phonemes, i.e. syllables
+# Returns an array of word's stressed/unstressed phonemes (i.e. syllables)
 def syllabize(word)
-  # Returns an unstressed syllable if the CMU had failed
-  # Need to fix!
+  # Currently returns a stressed syllable if the CMU lookup fails
   return ['0'] if word[0][0].empty?
 
   word.select { |phoneme| phoneme =~ /[0-2]/ }
 end
 
-# Returns a visual representation of stress
+# Returns an array of stress markers for the phonemes
 def scan(phoneme_array)
   phoneme_array.map { |phoneme| stressed?(phoneme) }
 end
@@ -53,25 +38,33 @@ def stressed?(phoneme)
   phoneme =~ /[12]/ ? '^' : '_'
 end
 
-# Prints the scanned line using ^ (stressed) and _ (unstressed)
+# Iterates through lines, prints meter (^ / _) above the original line
 def print_meter(lines, scanned_lines)
-  (0...lines.length).each do |i|
-    p scanned_lines[i]
-    puts lines[i]
+  (0...lines.length).each do |line_num|
+    p scanned_line[line_num]
+    p scanned_lines[line_num]
+    # puts metrify_string(lines[line_num], scanned_lines[line_num])
+    # puts lines[line_num]
   end
 end
 
-# TODO: For print_meter, for each line:
-# create a scanned_string with spaces equal to the original line
-# find the index and length of each word in line.split
-# insert the scanned_word[index].joined at scanned_string[index]
-# print scanned_line
-# print line
-# for the associated index in scanned_lines, use word.length to fill space
+# Returns a string with stress markers indexed to words of original line
+def metrify_string(line, scanned_line)
+  # Creates a blank line the same size as the original
+  meter_string = ' ' * line.length
+  # Iterates through original tokenized words
+  tokenize(line).each_with_index do |word, index|
+    # Finds the position of the word as an index (nil if not found)
+    word_position = line.downcase =~ /#{word.downcase}/
+    next if word_position.nil?
 
-## --- File processing 
+    # Inserts meter array into blank line at same index as original word
+    meter_string[word_position] = scanned_line[index].join(' ')
+  end
+  meter_string
+end
 
-# Check for weird arguments when running the script
+# Checks for weird arguments when running the script
 def check_args?
   if ARGV.length != 1
     puts 'Run the script with: > ruby poem-analysis.rb [poem].txt'
@@ -89,7 +82,7 @@ def load_poem(filename)
   File.readlines(filename, chomp: true).reject(&:empty?)
 end
 
-# Tokenize, phoneticize, syllabize, and scan each line
+# Tokenizes, phoneticizes, syllabizes, and scans each line
 def analyze(lines)
   scanned_lines = []
   lines.each do |line|

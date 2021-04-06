@@ -50,7 +50,7 @@ The script
      
 7) scans the word based on syllabic stress, where primary (1) stress is depicted with ```^``` and secondary (2) stress or unstressed (0) with ```_```
 
-     ``` ["1", "0", "2"] => ["^", "_", "^"] ```
+     ``` ["1", "0", "2"] => ["^", "_", "_"] ```
      
 9) collects the scanned words and outputs a conventional visual representation of each line's meter:
 

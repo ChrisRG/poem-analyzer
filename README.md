@@ -53,8 +53,10 @@ The script
      
 9) collects the scanned words and outputs a conventional visual representation of each line's meter:
 
-     ```^ ^ _ _     _ ^  
-     I celebrate myself```
+     ```
+     ^ ^ _ _     _ ^  
+     I celebrate myself
+     ```
      
 
 ## To do

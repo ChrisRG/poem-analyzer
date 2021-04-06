@@ -16,6 +16,20 @@ I loafe and invite my soul,
 I lean and loafe at my ease observing a spear of summer grass.
 ```
 
+## Setup
+Make sure you have [Ruby](https://www.ruby-lang.org/en/documentation/installation/) installed. The script should work with all versions, although I used [rbenv](https://github.com/rbenv/rbenv#installation) to force Ruby version 2.6.6.
+
+Next clone the repository:
+```
+git clone https://github.com/ChrisRG/poem-analyzer.git
+```
+Now just run
+```
+> ruby poem-analysis.rb [poem-file].txt
+```
+There are a few snippets of poems available in the poems/ directory, although any plain .txt file can be targeted.
+
+
 ## Approach
 0) takes as input a text file containing one poem (with no title, author, or any other headers)
 1) loads the Carnegie Mellon Uni pronunciation dictionary as JSON

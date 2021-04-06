@@ -51,14 +51,16 @@ def metrify_string(line, scanned_line)
   # Creates a blank line the same size as the original
   meter_string = ' ' * line.length
   # Iterates through original tokenized words
+  word_pos = -1
   tokenize(line).each_with_index do |word, index|
     # Finds the position of the word as an index (nil if not found)
-    word_position = line.downcase =~ /#{word.downcase}/
-    next if word_position.nil?
+    # To ennsure finding multiple words, search from previous word index + 1
+    word_pos = line.downcase.index(/#{word.downcase}/, word_pos + 1)
+    next if word_pos.nil?
 
-    # Inserts meter array into blank line at same index as original word
-    # TODO: insert the scanned_line meter into a range
-    meter_string[word_position] = scanned_line[index].join(' ')
+    # Inserts joined meter arr into blank line at same index as original word
+    # Must specify meter array length to overwrite blank line slice
+    meter_string[word_pos, meter.length] = scanned_line[index].join(' ')
   end
   meter_string
 end

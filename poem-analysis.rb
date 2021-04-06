@@ -58,9 +58,10 @@ def metrify_string(line, scanned_line)
     word_pos = line.downcase.index(/#{word.downcase}/, word_pos + 1)
     next if word_pos.nil?
 
-    # Inserts joined meter arr into blank line at same index as original word
-    # Must specify meter array length to overwrite blank line slice
-    meter_string[word_pos, meter.length] = scanned_line[index].join(' ')
+    # Inserts meter array into blank line at same index as original word
+    # Must specify meter array length for insertion to overwrite entire slice
+    meter = scanned_line[index].join(' ')
+    meter_string[word_pos, meter.length] = meter
   end
   meter_string
 end

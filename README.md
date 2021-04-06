@@ -1,9 +1,20 @@
 # poem-analyzer    p lines[line_num]
-    p scanned_lines[line_num]
-
 Rather rudimentary script for scanning the meter of English poetry! Still has a lot of work to do.
 
 ## Example
+```
+❯ ruby poem-analysis.rb poems/whitman.txt
+^ ^ _ ^     ^ ^     _   ^    ^ ^
+I celebrate myself, and sing myself,
+_   ^    ^ _ ^    ^   ^     _ ^
+And what I assume you shall assume,
+^   ^ _ _ ^ _  _ ^ _     ^  ^  ^  ^    _ ^     ^  ^
+For every atom belonging to me as good belongs to you.
+^ ^     _   _ ^    ^  ^
+I loafe and invite my soul,
+^ ^    _   ^     ^  ^  ^    _ ^ _     _ ^     ^  ^ _    ^
+I lean and loafe at my ease observing a spear of summer grass.
+```
 
 ## Approach
 0) takes as input a text file containing one poem (with no title, author, or any other headers)
@@ -17,7 +28,9 @@ Rather rudimentary script for scanning the meter of English poetry! Still has a 
      e.g. (iambic pentameter: ^_ ^_ ^_ ^_ ^_)
 
 ## To do
-Unfortunately at this initial stage, the analyzer is not particularly accurate. Currently it does not handle words containing punctuation or variants very well. The next steps include integrating some basic metrical rules (such as unstressed monosyllables) and providing some sort of "guess" for words that aren't found in the CMU (perhaps based on word length).
+At this initial stage, the analyzer is not particularly accurate. It doesn't handle words containing punctuation or variants very well. Nor is it good at guessing variation (e.g. in the Whitman example above, the CMU lookup returns 'loaf' but not 'loafe'). 
+
+Next steps include integrating some basic metrical rules (such as unstressed monosyllables, especially verse-initial ones) and providing some sort of syllabic estimation for words that aren't found in the CMU at all, peraps based on word length. 
 
 After that, it's onward to metrical feet and larger structures (rhymes, stanzas, etc).
 

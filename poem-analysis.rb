@@ -23,7 +23,7 @@ end
 # Returns an array of word's stressed/unstressed phonemes (i.e. syllables)
 def syllabize(word)
   # Currently returns a stressed syllable if the CMU lookup fails
-  return ['0'] if word[0][0].empty?
+  return ['1'] if word[0][0].empty?
 
   word.select { |phoneme| phoneme =~ /[0-2]/ }
 end

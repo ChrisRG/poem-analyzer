@@ -1,4 +1,4 @@
-# Poem Analyzer (name under revision)
+# Poem Analyzer (name up for debate 🤔)
 Rather rudimentary script for scanning the meter of English poetry! Still has a lot of work to do.
 
 ## Example

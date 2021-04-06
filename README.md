@@ -37,24 +37,26 @@ The script
 1) loads into a hash [Carnegie Mellon University's pronunciation dictionary](http://www.speech.cs.cmu.edu/cgi-bin/cmudict/), stored locally as a JSON
 2) tokenizes the words in each line by removing punctuation and converting everything to lower case
 
-     "I celebrate myself" => \["i", "celebrate", "myself"]
+     ``` "I celebrate myself" => \["i", "celebrate", "myself"] ```
      
 4) searches for each word in the CMU dictionary, which returns a standardized phonetic representation
 
-     "celebrate" => \[\["S", "EH1", "L", "AH0", "B", "R", "EY2", "T"]]
+     ``` "celebrate" => \[\["S", "EH1", "L", "AH0", "B", "R", "EY2", "T"]] ```
      
 5) syllabizes the word based on the CMU dictionary's stress markers (0-2)
 
-     \[\["S", "EH1", "L", "AH0", "B", "R", "EY2", "T"]] => \["1", "0", "2"]
+    ``` \[\["S", "EH1", "L", "AH0", "B", "R", "EY2", "T"]] => \["1", "0", "2"] ```
      
 7) scans the word based on syllabic stress, where primary (1) stress is depicted with "^" and secondary (2) stress or unstressed (0) with "_"
 
-     \["1", "0", "2"] => \["^", "_", "^"]
+     ``` \["1", "0", "2"] => \["^", "_", "^"] ```
      
 9) collects the scanned words and outputs a conventional visual representation of each line's meter:
 
+     ```
      ^ ^ _ _     _ ^  
      I celebrate myself
+     ```
 
 ## To do
 At this initial stage, the analyzer is not particularly accurate. It doesn't handle words containing punctuation or variants very well. Nor is it good at guessing variation (e.g. in the Whitman example above, the CMU lookup returns 'loaf' but not 'loafe'). 

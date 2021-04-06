@@ -33,6 +33,7 @@ There are a few snippets of poems available in the poems/ directory, although an
 
 ## How it works
 The script
+
 0) takes as an argument a text file containing one poem (with no title, author, or any other headers)
 1) loads into a hash [Carnegie Mellon University's pronunciation dictionary](http://www.speech.cs.cmu.edu/cgi-bin/cmudict/), stored locally as a JSON
 2) tokenizes the words in each line by removing punctuation and converting everything to lower case

@@ -52,7 +52,7 @@ The script
 
      ``` ["1", "0", "2"] => ["^", "_", "_"] ```
      
-9) collects the scanned words and outputs a conventional visual representation of each line's meter:
+9) collects the scanned words and outputs a conventional visual representation of each line's meter
 
      ```
      ^ ^ _ _     _ ^  

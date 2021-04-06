@@ -35,7 +35,7 @@ end
 
 # Returns ^ if phoneme has primary or secondary stress, otherwise _
 def stressed?(phoneme)
-  phoneme =~ /[12]/ ? '^' : '_'
+  phoneme =~ /1/ ? '^' : '_'
 end
 
 # Iterates through lines, prints meter (^ / _) above the original line

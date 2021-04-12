@@ -1,9 +1,10 @@
-# Poem Analyzer (name up for debate 🤔)
+# Poem Analyzer (name open to suggestions 🤔)
 Rather rudimentary script for scanning the meter of English poetry! Still has a lot of work to do.
 
 ## Example
 ```
 ❯ ruby poem-analysis.rb poems/whitman.txt
+
 ^ ^ _ _     _ ^     _   ^    _ ^
 I celebrate myself, and sing myself,
 _   ^    ^ _ ^    ^   ^     _ ^
